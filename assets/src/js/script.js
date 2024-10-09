@@ -1,8 +1,9 @@
 let currentQuestion = 0;
+let rightQuestion = 0;
 
 function init() {
     document.getElementById("allQuestions").innerHTML = questions.length;
-
+    document.getElementById("allAmountQuestion").innerHTML = questions.length;
     showQuestion();
 }
 
@@ -21,12 +22,16 @@ function showQuestion() {
 
 function answer(selected) {
     let answerBox = document.getElementById(`answer${selected}`);
+    let correctAnswerBox = document.getElementById(`answer${questions[currentQuestion].correct}`);
 
     if (selected == questions[currentQuestion].correct) {
         answerBox.classList.add("correct_answer");
+        rightQuestion++;
     } else {
         answerBox.classList.add("in_correct_answer");
+        correctAnswerBox.classList.add("correct_answer");
     }
+    document.getElementById("nextQuestionButton").disabled = false;
 }
 
 function nextQuestion() {
@@ -34,6 +39,7 @@ function nextQuestion() {
         currentQuestion++;
         showQuestion();
     } else {
-        console.log("Quiz beendet.");
+        overlayShow("overlay", "show");
     }
+    document.getElementById("nextQuestionButton").disabled = true;
 }
