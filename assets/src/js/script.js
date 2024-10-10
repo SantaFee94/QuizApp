@@ -8,6 +8,7 @@ function init() {
 }
 
 function showQuestion() {
+    statusProgressBar()
     let currentlyQuestion = currentQuestion + 1;
     let question = questions[currentQuestion];
     let answerRef = document.getElementById("answerContainer");
@@ -23,6 +24,7 @@ function showQuestion() {
 function answer(selected) {
     let answerBox = document.getElementById(`answer${selected}`);
     let correctAnswerBox = document.getElementById(`answer${questions[currentQuestion].correct}`);
+    
 
     if (selected == questions[currentQuestion].correct) {
         answerBox.classList.add("correct_answer");

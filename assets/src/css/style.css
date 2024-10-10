@@ -29,9 +29,23 @@ a {
     width: 30rem;
 }
 
+.progress{
+    margin-top: 4px;
+    background-color: #555555 !important;
+    border-radius: 0 !important;
+}
+
+.progress-bar{
+    background-color: red !important;
+    color: black !important;
+    font-weight: bold;
+    text-align: center;
+}
+
 .card-title {
-    color: red !important;
+    color: rgb(255, 136, 0) !important;
     margin-bottom: 16px !important;
+    text-align: center;
 }
 
 .answer {
