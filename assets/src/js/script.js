@@ -1,5 +1,7 @@
 let currentQuestion = 0;
 let rightQuestion = 0;
+let audioRightAnswer = new Audio("assets/sound/right_answer.mp3");
+let audioWrongAnswer = new Audio("assets/sound/wrong_answer.mp3");
 
 function init() {
     document.getElementById("allQuestions").innerHTML = questions.length;
@@ -8,7 +10,7 @@ function init() {
 }
 
 function showQuestion() {
-    statusProgressBar()
+    statusProgressBar();
     let currentlyQuestion = currentQuestion + 1;
     let question = questions[currentQuestion];
     let answerRef = document.getElementById("answerContainer");
@@ -24,12 +26,13 @@ function showQuestion() {
 function answer(selected) {
     let answerBox = document.getElementById(`answer${selected}`);
     let correctAnswerBox = document.getElementById(`answer${questions[currentQuestion].correct}`);
-    
 
     if (selected == questions[currentQuestion].correct) {
         answerBox.classList.add("correct_answer");
+        audioRightAnswer.play();
         rightQuestion++;
     } else {
+        audioWrongAnswer.play();
         answerBox.classList.add("in_correct_answer");
         correctAnswerBox.classList.add("correct_answer");
     }
